@@ -1,10 +1,17 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { view } from './storybook.requires';
+import { view } from "./storybook.requires";
+
+const store: Record<string, any> = {
+  lastOpenedStory: "buttons-button--button-default",
+};
 
 const StorybookUIRoot = view.getStorybookUI({
   storage: {
-    getItem: AsyncStorage.getItem,
-    setItem: AsyncStorage.setItem,
+    getItem: async (key) => {
+      return store[key];
+    },
+    setItem: async (key: string, value: any) => {
+      store[key] = value;
+    },
   },
 });
 

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Text, TextStyle } from "react-native";
+import { StyleProp, Text, TextStyle } from "react-native";
 import { useTheme } from "src/hooks";
 import {
   type FontFamilies,
@@ -32,15 +32,17 @@ const Typography: React.FC<TypographyProps> = (props) => {
     return getTypographyStyles(theme, props);
   }, [props.variant, props.color, props.fontFamily, theme]);
 
-  return <Text style={styles}>{props.children}</Text>;
+  return <Text style={[styles, props.style]}>{props.children}</Text>;
 };
 
 export type TypographyProps = {
   children: React.ReactNode;
-  variant: TypographyVariants;
+  variant?: TypographyVariants;
 
   fontFamily?: FontFamilies;
   color?: PaleteColors;
+
+  style?: StyleProp<TextStyle>;
 };
 
 export { Typography };

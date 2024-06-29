@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
 import { capitalCase } from "change-case";
-import { JAKARTA_SANS } from "src/theme/typography";
+import { FONTS } from "src/theme";
 import { DEFAULT_TEXT_COLOR, PRIMARY, SECONDARY } from "src/theme/palette";
 
 export const Button: React.FC<ButtonProps> = (props) => {
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "center",
     color: "#FFFFFF",
-    fontFamily: JAKARTA_SANS.semiBold,
+    fontFamily: FONTS["PlusJakartaSans-Bold"],
   },
 
   //   container

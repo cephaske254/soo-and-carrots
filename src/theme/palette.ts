@@ -1,16 +1,16 @@
 import get from "lodash.get";
 
 export const GREY = {
-  "50": "#fafafa",
+  "50": "#F9FAFB",
   "100": "#f5f5f5",
   "200": "#eeeeee",
   "300": "#e0e0e0",
   "400": "#bdbdbd",
   "500": "#9e9e9e",
-  "600": "#757575",
+  "600": "#475467",
   "700": "#616161",
-  "800": "#424242",
-  "900": "#212121",
+  "800": "#1D2939",
+  "900": "#101828",
   A100: "#f5f5f5",
   A200: "#eeeeee",
   A400: "#bdbdbd",
@@ -25,17 +25,33 @@ export const DARK = GREY[800];
 
 export const PRIMARY = {
   main: "#253BFF",
-};
+} as const;
 
 export const SECONDARY = {
-  main: "#1D2939",
-};
+  main: GREY[800],
+} as const;
+
+export const BLUE = {
+  200: "#B8BFFF",
+  500: "#4C53FF",
+  600: PRIMARY.main,
+  700: "#2030E2",
+} as const;
+
+export const ERROR = {
+  lighter: "#FFE7D9",
+  light: "#FFA48D",
+  main: "#FF4842",
+  dark: "#B72136",
+  darker: "#7A0C2E",
+} as const;
 
 const palette = {
   primary: PRIMARY,
   secondary: SECONDARY,
+  error: ERROR,
   grey: GREY,
-
+  blue: BLUE,
   common: {
     dark: DARK,
     light: LIGHT,

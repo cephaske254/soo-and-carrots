@@ -4,6 +4,8 @@ const FONTS = {
   "PlusJakartaSans-Medium": "PlusJakartaSans-Medium",
   "PlusJakartaSans-SemiBold": "PlusJakartaSans-SemiBold",
   "PlusJakartaSans-Bold": "PlusJakartaSans-Bold",
+  "PlusJakartaSans-ExtraBold": "PlusJakartaSans-ExtraBold",
+
 } as const;
 
 type FontFamilies = keyof typeof FONTS;

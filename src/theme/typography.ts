@@ -1,12 +1,5 @@
 import { TextStyle } from "react-native";
-
-export const JAKARTA_SANS = {
-  light: "PlusJakartaSans-Light",
-  regular: "PlusJakartaSans-Regular",
-  medium: "PlusJakartaSans-Medium",
-  semiBold: "PlusJakartaSans-SemiBold",
-  bold: "PlusJakartaSans-Bold",
-} as const;
+import { FONTS } from "./fonts";
 
 /** Use this function to build text styles */
 const textStyle = <T extends TextStyle>(data: T) => {
@@ -22,55 +15,61 @@ const textStyle = <T extends TextStyle>(data: T) => {
 
 const typography = {
   title1: textStyle({
-    fontFamily: JAKARTA_SANS.bold,
+    fontFamily: FONTS["PlusJakartaSans-ExtraBold"],
     fontSize: 32,
   }),
   title2: textStyle({
-    fontFamily: JAKARTA_SANS.bold,
+    fontFamily: FONTS["PlusJakartaSans-ExtraBold"],
     fontSize: 24,
   }),
   title3: textStyle({
-    fontFamily: JAKARTA_SANS.bold,
+    fontFamily: FONTS["PlusJakartaSans-ExtraBold"],
     fontSize: 20,
   }),
   title4: textStyle({
-    fontFamily: JAKARTA_SANS.bold,
+    fontFamily: FONTS["PlusJakartaSans-ExtraBold"],
     fontSize: 16,
   }),
   title5: textStyle({
-    fontFamily: JAKARTA_SANS.bold,
+    fontFamily: FONTS["PlusJakartaSans-ExtraBold"],
     fontSize: 14,
   }),
   title6: textStyle({
-    fontFamily: JAKARTA_SANS.bold,
+    fontFamily: FONTS["PlusJakartaSans-ExtraBold"],
     fontSize: 12,
   }),
   subtitle1: textStyle({
-    fontFamily: JAKARTA_SANS.regular,
+    fontFamily: FONTS["PlusJakartaSans-Medium"],
     fontSize: 16,
   }),
   subtitle2: textStyle({
-    fontFamily: JAKARTA_SANS.regular,
+    fontFamily: FONTS["PlusJakartaSans-Medium"],
     fontSize: 14,
   }),
   body1: textStyle({
-    fontFamily: JAKARTA_SANS.regular,
+    fontFamily: FONTS["PlusJakartaSans-Regular"],
     fontSize: 16,
   }),
   body2: textStyle({
-    fontFamily: JAKARTA_SANS.regular,
+    fontFamily: FONTS["PlusJakartaSans-Regular"],
     fontSize: 14,
   }),
+  body3: textStyle({
+    fontFamily: FONTS["PlusJakartaSans-Regular"],
+    fontSize: 13,
+  }),
   button: textStyle({
-    fontFamily: JAKARTA_SANS.medium,
+    fontFamily: FONTS["PlusJakartaSans-Bold"],
     fontSize: 14,
   }),
   caption: textStyle({
-    fontFamily: JAKARTA_SANS.regular,
+    fontFamily: FONTS["PlusJakartaSans-Regular"],
+
     fontSize: 12,
   }),
   overline: textStyle({
-    fontFamily: JAKARTA_SANS.regular,
+    fontFamily: FONTS["PlusJakartaSans-Regular"],
+
     fontSize: 10,
   }),
 } as const;

@@ -17,5 +17,6 @@ declare global {
 export * from "./typography";
 export * from "./palette";
 export * from "./fonts";
+export * from "./spacing";
 
 export { theme };

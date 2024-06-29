@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "src/components";
 
 const ButtonMeta: Meta<typeof Button> = {
-  title: "Button",
+  title: "Buttons/Button",
   component: Button,
   argTypes: {
     rounded: {

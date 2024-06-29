@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { LogBox } from "react-native";
+import Constants from "expo-constants";
+import { FontsLoader } from "./src/components/FontsLoader";
+import * as SplashScreen from "expo-splash-screen";
+import { ThemeProvider } from "src/contexts";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+SplashScreen.preventAutoHideAsync().catch((e) => {
+  console.log(e);
+});
+
+let AppEntryPoint = null as unknown as React.FC;
+
+if (Constants.expoConfig?.extra?.storybookEnabled === true) {
+  const Component = require("./.storybook").default as React.FC;
+
+  AppEntryPoint = (props) => {
+    return (
+      <ThemeProvider>
+        <FontsLoader callback={SplashScreen.hideAsync}>
+          <Component {...props} />
+        </FontsLoader>
+      </ThemeProvider>
+    );
+  };
+
+  AppEntryPoint.displayName = "Storybook";
+
+  LogBox.ignoreLogs(["Warning: TextType: Support for defaultProps"]);
+} else {
+  AppEntryPoint = require("./App.main").default as React.FC;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default AppEntryPoint;

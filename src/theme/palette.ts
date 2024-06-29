@@ -32,6 +32,7 @@ export const SECONDARY = {
 } as const;
 
 export const BLUE = {
+  100: "#D3D8FF",
   200: "#B8BFFF",
   500: "#4C53FF",
   600: PRIMARY.main,

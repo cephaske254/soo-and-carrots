@@ -38,7 +38,7 @@ This is the recommended way to develop and test the app during development. It a
 - Start the development server:
 
 ```bash
-npm start
+npm run start
 ```
 
 - Open the "Expo Go" app on your phone and scan the QR code displayed in the terminal. (must be connected to the same Wi-Fi network).
@@ -50,13 +50,13 @@ To run the app on a specific platform (Android or iOS), you can use the followin
 - Android:
 
 ```bash
-npm start:android
+npm run start:android
 ```
 
 - iOS: (Requires a Mac computer)
 
 ```bash
-npm start:ios
+npm run start:ios
 ```
 
 ### 3. Storybook:
@@ -64,7 +64,7 @@ npm start:ios
 Storybook is a tool for building UI components in isolation.
 
 ```bash
-npm start:storybook
+npm run start:storybook
 ```
 
 ## Available Scripts
@@ -76,3 +76,27 @@ The project includes various npm scripts to simplify development tasks:
 - `start:ios`: Starts the development server for iOS (requires a Mac).
 - `start:storybook`: Starts the Storybook development server.
 - `storybook-generate`: Generates Storybook stories (refer to Storybook documentation).
+
+### Screenshots
+
+### 1. Onboarding
+
+![text](./screenshots/onboarding.jpg)
+
+### 2. Register
+
+![text](./screenshots/register.jpg)
+![text](./screenshots/register_with_errors.jpg)
+![text](./screenshots/register_filled.jpg)
+
+### 3. Competitions
+
+![text](./screenshots/competitions.jpg)
+![text](./screenshots/competitions_filtered.jpg)
+
+### 4. Home
+
+![text](./screenshots/home_success_modal.jpg)
+
+### 5. Storybook
+![text](./screenshots/storybooku.jpg)

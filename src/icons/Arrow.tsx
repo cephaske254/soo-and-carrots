@@ -12,3 +12,16 @@ export const ArrowLeftIcon: React.FC<SvgProps> = (props) => {
     </Svg>
   );
 };
+
+export const ArrowRightIcon: React.FC<SvgProps> = (props) => {
+  return (
+    <Svg width="20" height="20" viewBox="0 0 20 20" fill="none" {...props}>
+      <Path
+        d="M4.16663 9.99999H15.8333M15.8333 9.99999L9.99996 4.16666M15.8333 9.99999L9.99996 15.8333"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke={props.stroke ?? props.color ?? "white"}
+      />
+    </Svg>
+  );
+};

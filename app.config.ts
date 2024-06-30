@@ -1,7 +1,7 @@
 /** @type {import("@expo/config-types").ExpoConfig} */
 const config = {
-  name: "soo-n-carrots",
-  slug: "soo-n-carrots",
+  name: "soo-and-carrots",
+  slug: "soo-and-carrots",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./src/assets/icon.png",
@@ -21,6 +21,16 @@ const config = {
           "./src/assets/fonts/PlusJakartaSans-Medium.ttf",
           "./src/assets/fonts/PlusJakartaSans-SemiBold.ttf",
           "./src/assets/fonts/PlusJakartaSans-Bold.ttf",
+        ],
+      },
+    ],
+    [
+      "expo-asset",
+
+      {
+        assets: [
+          "./src/assets/videos/bg.mp4",
+          "./src/assets/videos/bg.thumbnail.png",
         ],
       },
     ],

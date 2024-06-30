@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import {
   DEFAULT_TEXT_COLOR,
+  GREY,
   LIGHT,
   PRIMARY,
   SECONDARY,
@@ -33,7 +34,7 @@ export const ICON_BUTTON_COLOR_OPTIONS = Object.keys(
 ) as (keyof typeof colors)[];
 
 export const ICON_BUTTON_VARIANT_OPTIONS = ["contained", "outline"] as const;
-export const ICON_BUTTON_SIZE = 65;
+export const ICON_BUTTON_SIZE = 52;
 
 export const IconButton: React.FC<IconButtonProps> = ({
   children,
@@ -42,6 +43,8 @@ export const IconButton: React.FC<IconButtonProps> = ({
   ...props
 }) => {
   const { color, containerStyles } = useMemo(() => {
+    if (!props.color) props.color = "default";
+
     let { color, backgroundColor } =
       colors[props.color ?? "default"] ?? colors.default;
 
@@ -53,7 +56,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
       styles = {
         ...styles,
         borderWidth: 1,
-        borderColor: backgroundColor,
+        borderColor: props.color === "default" ? GREY["300"] : backgroundColor,
         backgroundColor: "transparent",
       };
     }

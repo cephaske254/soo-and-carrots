@@ -7,13 +7,17 @@ const textStyle = <T extends TextStyle>(data: T) => {
     data.fontSize &&
     (data.lineHeight === null || data.lineHeight === undefined)
   ) {
-    data.lineHeight = data.fontSize * 1.5;
+    data.lineHeight = data.fontSize * 1.2;
   }
 
   return data;
 };
 
 const typography = {
+  header: textStyle({
+    fontFamily: FONTS["PlusJakartaSans-ExtraBold"],
+    fontSize: 34,
+  }),
   title1: textStyle({
     fontFamily: FONTS["PlusJakartaSans-ExtraBold"],
     fontSize: 32,
@@ -61,6 +65,7 @@ const typography = {
   button: textStyle({
     fontFamily: FONTS["PlusJakartaSans-Bold"],
     fontSize: 14,
+    lineHeight: 16,
   }),
   caption: textStyle({
     fontFamily: FONTS["PlusJakartaSans-Regular"],

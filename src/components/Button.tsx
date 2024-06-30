@@ -1,19 +1,28 @@
 import { useMemo } from "react";
-import { StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
+import {
+  StyleProp,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from "react-native";
 import { capitalCase } from "change-case";
-import { FONTS } from "src/theme";
+import { spacing } from "src/theme";
 import { DEFAULT_TEXT_COLOR, PRIMARY, SECONDARY } from "src/theme/palette";
+import { Typography } from "./Typography";
 
 export const Button: React.FC<ButtonProps> = (props) => {
   const { typography, container } = useButtonStyles(props);
   return (
-    <View style={[container]}>
+    <TouchableOpacity activeOpacity={0.8} {...props} style={[container]}>
       {props.startAdornment && props.startAdornment}
 
-      <Text style={[typography]}>{props.children}</Text>
+      <Typography variant="button" style={[typography]}>
+        {props.children}
+      </Typography>
 
       {props.endAdornment && props.endAdornment}
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -26,14 +35,13 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "center",
     color: "#FFFFFF",
-    fontFamily: FONTS["PlusJakartaSans-Bold"],
   },
 
   //   container
   container: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.md,
+    borderRadius: spacing.md,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -81,6 +89,9 @@ const styles = StyleSheet.create({
 
 // hooks -----------------------------------
 const useButtonStyles = (props: ButtonProps) => {
+  if (!props.variant) props.variant = "contained";
+  if (!props.color) props.color = "primary";
+
   return useMemo<UseButtonStylesReturn>(() => {
     const container: UseButtonStylesReturn["container"] = [styles.container];
     const typography: UseButtonStylesReturn["typography"] = [styles.typography];
@@ -131,7 +142,13 @@ const useButtonStyles = (props: ButtonProps) => {
       container,
       typography,
     };
-  }, [props?.variant]);
+  }, [
+    props?.variant,
+    props.color,
+    props.rounded,
+    props.containerStyles,
+    props.typographyStyles,
+  ]);
 };
 
 // types -----------------------------------
@@ -146,7 +163,7 @@ export type ButtonProps = {
   children?: React.ReactNode;
   startAdornment?: React.ReactElement;
   endAdornment?: React.ReactElement;
-};
+} & TouchableOpacity["props"];
 
 export type ButtonVariants = "contained" | "outlined" | "text";
 export type ButtonColors = "primary" | "secondary";

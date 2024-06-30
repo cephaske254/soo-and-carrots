@@ -60,10 +60,12 @@ export const IconButton: StoryObj<typeof IconButtonComponent> = {
     children: <ArrowLeftIcon />,
   },
 };
-export const IconButton1: StoryObj<typeof IconButtonComponent> = {
+export const IconButtonOutlined: StoryObj<typeof IconButtonComponent> = {
   args: {
     ...MyButtonMeta.args,
+    variant: "outline",
     children: <ArrowLeftIcon />,
+    color: "primary",
   },
 };
 

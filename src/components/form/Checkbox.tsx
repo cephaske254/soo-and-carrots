@@ -7,9 +7,10 @@ import {
   ViewStyle,
 } from "react-native";
 import { Typography, TypographyProps } from "../Typography";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { BLUE, GREY, spacing } from "src/theme";
 import { CheckIcon } from "src/icons/Check";
+import { HelperText } from "./HelperText";
 
 const SIZE = 24 as const;
 const ICON_SIZE = SIZE * 0.8;
@@ -48,23 +49,33 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
     return props.checked ?? props.defaultChecked === true ? 1 : 0;
   }, [props.checked, props.defaultChecked]);
 
+  const handleChange = useCallback(() => {
+    props.onChange?.(!props.checked);
+  }, [props.onChange, props.checked]);
+
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      {...props}
-      onPress={props.onPress}
-      style={[styles.container, props.containerStyle]}
-    >
-      <View style={styles.checkbox}>
-        <CheckIcon
-          height={ICON_SIZE}
-          width={ICON_SIZE}
-          color={GREY['500']}
-          opacity={opacity}
-        />
-      </View>
-      {label}
-    </TouchableOpacity>
+    <View>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        {...props}
+        onPress={handleChange}
+        style={[styles.container, props.containerStyle]}
+      >
+        <View style={styles.checkbox}>
+          <CheckIcon
+            height={ICON_SIZE}
+            width={ICON_SIZE}
+            color={GREY["500"]}
+            opacity={opacity}
+          />
+        </View>
+        {label}
+      </TouchableOpacity>
+
+      <HelperText error={props.error}>
+        {props.helperText}
+      </HelperText>
+    </View>
   );
 };
 
@@ -74,7 +85,10 @@ export type CheckboxProps = {
   labelStyles?: TypographyProps["style"];
   containerStyle?: StyleProp<ViewStyle>;
 
-  onPress?: TouchableOpacityProps["onPress"];
+  onChange?(value: boolean): void;
+
+  helperText?: string;
+  error?: boolean;
 
   checked?: boolean;
   defaultChecked?: boolean;

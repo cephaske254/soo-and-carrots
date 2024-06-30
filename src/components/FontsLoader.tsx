@@ -1,8 +1,16 @@
 import { memo, useEffect, useState } from "react";
 
 import * as Font from "expo-font";
+import Constants from "expo-constants";
 
 import { getFontsRequire } from "fonts";
+import * as SplashScreen from "expo-splash-screen";
+
+const isExpo = Constants.appOwnership === "expo";
+
+if (isExpo) {
+  SplashScreen.preventAutoHideAsync().catch((e) => {});
+}
 
 export const FontsLoader = memo<
   React.PropsWithChildren<{
@@ -15,11 +23,13 @@ export const FontsLoader = memo<
     // Load fonts here
     await Font.loadAsync(getFontsRequire());
     setFontsLoaded(true);
-    callback?.();
+    SplashScreen.hideAsync();
   };
 
   useEffect(() => {
-    loadFonts();
+    if (isExpo) {
+      loadFonts();
+    }
   }, []);
 
   if (!fontsLoaded) return null;

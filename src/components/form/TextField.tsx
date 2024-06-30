@@ -9,59 +9,67 @@ import {
 import { HelperText } from "./HelperText";
 import { FONTS, GREY, spacing } from "src/theme";
 import { InputLabel } from "./InputLabel";
+import { forwardRef } from "react";
 
 export type TextFieldVariants = "contained" | "outlined";
 
-export const TextField: React.FC<TextFieldProps> = ({
-  error,
-  helperText,
-  placeholder,
-  required,
-  variant,
-  startAdornment,
-  endAdornment,
-  style,
-  containerStyle,
-  innerContainerStyle,
-  label,
-  fullWidth = true,
-  ...props
-}) => {
-  return (
-    <View
-      style={[
-        styles.container,
-        fullWidth && styles.containerFullWidth,
-        containerStyle,
-      ]}
-    >
-      <InputLabel required={required}>{label}</InputLabel>
+export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
+  function TextField(
+    {
+      error,
+      helperText,
+      placeholder,
+      required,
+      variant,
+      startAdornment,
+      endAdornment,
+      style,
+      containerStyle,
+      innerContainerStyle,
+      label,
+      fullWidth = true,
+      hideErrors,
+      ...props
+    },
+    ref
+  ) {
+    return (
       <View
         style={[
-          styles.innerContainer,
-          props.readOnly && styles.innerContainerReadOnly,
-          innerContainerStyle,
+          styles.container,
+          fullWidth && styles.containerFullWidth,
+          containerStyle,
         ]}
       >
-        {startAdornment}
+        <InputLabel required={required}>{label}</InputLabel>
+        <View
+          style={[
+            styles.innerContainer,
+            props.readOnly && styles.innerContainerReadOnly,
+            innerContainerStyle,
+          ]}
+        >
+          {startAdornment}
 
-        <TextInput
-          placeholder={placeholder}
-          style={[styles.input, style]}
-          cursorColor={GREY["800"]}
-          placeholderTextColor={GREY["500"]}
-          {...props}
-        />
+          <TextInput
+            placeholder={placeholder}
+            style={[styles.input, style]}
+            cursorColor={GREY["800"]}
+            placeholderTextColor={GREY["500"]}
+            ref={ref}
+            {...props}
+          />
 
-        {endAdornment}
+          {endAdornment}
+        </View>
+
+        <HelperText error={error} style={styles.label}>
+          {hideErrors && !!error ? null : helperText}
+        </HelperText>
       </View>
-
-      <HelperText error={error} style={styles.label}>
-        {helperText}
-      </HelperText>
-    </View>
-  );
-};
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   container: {},
@@ -71,7 +79,7 @@ const styles = StyleSheet.create({
 
   innerContainer: {
     backgroundColor: GREY[50],
-    borderRadius: spacing.sm,
+    borderRadius: spacing.sm + 2,
     overflow: "hidden",
     flexDirection: "row",
     alignItems: "center",
@@ -81,9 +89,8 @@ const styles = StyleSheet.create({
     backgroundColor: GREY[100],
   },
   input: {
-    paddingVertical: spacing.sm,
+    paddingVertical: spacing.sm + 2,
     paddingHorizontal: spacing.sm,
-    borderRadius: spacing.sm,
     flex: 1,
     color: GREY[800],
     fontFamily: FONTS["PlusJakartaSans-Regular"],
@@ -104,6 +111,8 @@ export type TextFieldProps = {
 
   variant?: TextFieldVariants;
 
+  hideErrors?: boolean;
+
   helperText?: string;
   error?: boolean;
 
@@ -113,3 +122,5 @@ export type TextFieldProps = {
   innerContainerStyle?: StyleProp<ViewStyle>;
   containerStyle?: StyleProp<ViewStyle>;
 } & TextInputProps;
+
+export type TextFieldRef = TextInput;

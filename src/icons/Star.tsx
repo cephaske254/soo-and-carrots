@@ -1,4 +1,4 @@
-import { Svg, SvgProps, G, Path, Defs, Rect } from "react-native-svg";
+import { Svg, SvgProps, G, Path, Defs, Rect, ClipPath } from "react-native-svg";
 
 const DEFAULT_SIZE = 24;
 
@@ -18,13 +18,13 @@ export const StarIcon: React.FC<SvgProps> = (props) => {
         />
       </G>
       <Defs>
-        <clipPath id="clip0_1138_242">
+        <ClipPath id="clip0_1138_242">
           <Rect
             width={props.width ?? DEFAULT_SIZE}
             height={props.height ?? DEFAULT_SIZE}
             fill={props.fill ?? "white"}
           />
-        </clipPath>
+        </ClipPath>
       </Defs>
     </Svg>
   );

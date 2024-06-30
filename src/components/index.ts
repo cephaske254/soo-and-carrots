@@ -16,3 +16,6 @@ export * from "./hook-form/FormProvider";
 export * from "./hook-form/RHFTextField";
 export * from "./hook-form/RHFPasswordField";
 export * from "./hook-form/RHFCheckbox";
+
+// modals
+export * from "./modals/Notification";

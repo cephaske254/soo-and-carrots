@@ -25,8 +25,8 @@ export type HomeStackParamList = {
 
 export type HomeStackScreenProps<T extends keyof HomeStackParamList> =
   CompositeScreenProps<
-    StackScreenProps<RootStackParamList, "Home">,
-    StackScreenProps<HomeStackParamList, T>
+    StackScreenProps<HomeStackParamList, T>,
+    StackScreenProps<RootStackParamList, "Home">
   >;
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =

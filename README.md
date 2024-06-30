@@ -85,19 +85,19 @@ The project includes various npm scripts to simplify development tasks:
 
 ### 2. Register
 
-![text](./screenshots/register.jpg)
-![text](./screenshots/register_with_errors.jpg)
-![text](./screenshots/register_filled.jpg)
+![Register](./screenshots/register.jpg)
+![Register with errors](./screenshots/register_with_errors.jpg)
+![REgister with data](./screenshots/register_filled.jpg)
 
 ### 3. Competitions
 
-![text](./screenshots/competitions.jpg)
-![text](./screenshots/competitions_filtered.jpg)
+![Competitions](./screenshots/competitions.jpg)
+![Competitions Filtered](./screenshots/competitions_filtered.jpg)
 
 ### 4. Home
 
-![text](./screenshots/home_success_modal.jpg)
+![Success Message](./screenshots/home_success_modal.jpg)
 
 ### 5. Storybook
 
-![text](./screenshots/storybooku.jpg)
+![Storybook](./screenshots/storybook.jpg)

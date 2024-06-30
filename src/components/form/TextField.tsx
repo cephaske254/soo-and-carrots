@@ -7,7 +7,7 @@ import {
   StyleProp,
 } from "react-native";
 import { HelperText } from "./HelperText";
-import { FONTS, GREY, spacing } from "src/theme";
+import { FONTS, GREY, spacing, typography } from "src/theme";
 import { InputLabel } from "./InputLabel";
 import { forwardRef } from "react";
 
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     flex: 1,
     color: GREY[800],
     fontFamily: FONTS["PlusJakartaSans-Regular"],
+    fontSize: typography.body3.fontSize,
   },
 
   label: {

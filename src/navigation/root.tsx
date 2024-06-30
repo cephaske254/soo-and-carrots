@@ -1,14 +1,18 @@
 import OnboardingScreen from "src/screens/onboarding";
 import RegisterScreen, { RegisterScreenHeader } from "src/screens/register";
 
-import { HomeNavigator } from "./home";
-import type { RootStackParamList } from "./types";
 import {
   DefaultTheme,
   Theme,
   NavigationContainer,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import SelectCompetitionScreen, {
+  SelectCompetitionHeader,
+} from "src/screens/Home/select-competition";
+
+import { HomeNavigator } from "./home";
+import type { RootStackParamList } from "./types";
 
 const theme: Theme = {
   ...DefaultTheme,
@@ -44,6 +48,17 @@ export const RootNavigator = () => {
             },
           }}
         />
+        <RootStackNavigation.Screen
+          name="select_competition"
+          component={SelectCompetitionScreen}
+          options={{
+            headerShown: true,
+            header(props) {
+              return <SelectCompetitionHeader {...props} />;
+            },
+          }}
+        />
+
         <RootStackNavigation.Screen name="Home" component={HomeNavigator} />
       </RootStackNavigation.Navigator>
     </NavigationContainer>

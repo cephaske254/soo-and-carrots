@@ -3,12 +3,18 @@ import {
   NavigatorScreenParams,
 } from "@react-navigation/native";
 import type { StackScreenProps } from "@react-navigation/stack";
+import { Competition } from "src/types/competition";
 
 export type RootStackParamList = {
   onboarding: undefined;
-  register: undefined;
+  register: {
+    competition?: Competition;
+  };
 
   Home: NavigatorScreenParams<HomeStackParamList>;
+  select_competition: {
+    active_competition?: string | null;
+  };
 };
 
 export type HomeStackParamList = {

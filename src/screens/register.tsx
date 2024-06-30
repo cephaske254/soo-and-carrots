@@ -19,7 +19,8 @@ import { ArrowLeftIcon } from "src/icons";
 import { GREY, spacing } from "src/theme";
 import { RHFCheckbox } from "src/components/hook-form/RHFCheckbox";
 import type { NativeStackHeaderProps } from "@react-navigation/native-stack";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
+import { RootStackScreenProps } from "src/navigation";
 
 const PASSWORD_CHARACTERS_REGEX = /^[a-zA-Z0-9(~`!@#$%^&*()_+-=?) ]+$/;
 
@@ -50,7 +51,10 @@ export const RegisterScreenHeader = (props: NativeStackHeaderProps) => {
   );
 };
 
-const RegisterScreen: React.FC = () => {
+const RegisterScreen: React.FC<RegisterScreenProps> = ({
+  navigation,
+  route: { params },
+}) => {
   const methods = useForm({
     resolver: yupResolver(schema),
     defaultValues,
@@ -68,14 +72,23 @@ const RegisterScreen: React.FC = () => {
     return promise;
   });
 
-  const openCategorySelector = useCallback(() => {}, []);
+  const openCategorySelector = useCallback(() => {
+    navigation.navigate("select_competition", {
+      active_competition: params?.competition?.uuid,
+    });
+  }, [params?.competition?.uuid, navigation]);
+
+  useEffect(() => {
+    if (params?.competition?.uuid) {
+      methods.setValue("competition", params?.competition?.title);
+    }
+  }, [params?.competition?.uuid]);
 
   return (
     <View style={styles.container}>
       <ScrollView
         style={[styles.container, { paddingHorizontal: spacing.lg }]}
         contentContainerStyle={styles.content}
-        stickyHeaderIndices={[0]}
       >
         <FormProvider methods={methods}>
           <TouchableOpacity onPress={openCategorySelector} activeOpacity={0.9}>
@@ -232,5 +245,7 @@ const defaultValues: FieldValues = {
 };
 
 type FieldValues = yup.InferType<typeof schema>;
+
+type RegisterScreenProps = RootStackScreenProps<"register">;
 
 export default RegisterScreen;

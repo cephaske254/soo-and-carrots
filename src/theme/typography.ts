@@ -57,6 +57,7 @@ const typography = {
   body2: textStyle({
     fontFamily: FONTS["PlusJakartaSans-Regular"],
     fontSize: 14,
+    lineHeight: 21,
   }),
   body3: textStyle({
     fontFamily: FONTS["PlusJakartaSans-Regular"],
@@ -69,12 +70,10 @@ const typography = {
   }),
   caption: textStyle({
     fontFamily: FONTS["PlusJakartaSans-Regular"],
-
     fontSize: 12,
   }),
   overline: textStyle({
     fontFamily: FONTS["PlusJakartaSans-Regular"],
-
     fontSize: 10,
   }),
 } as const;

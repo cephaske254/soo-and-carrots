@@ -11,11 +11,13 @@ export const CompetitionCard: React.FC<CompetitionCardProps> = ({
   to,
   description,
   title,
+  onPress,
 }) => {
   return (
     <TouchableOpacity
       style={[styles.container, active && styles.containerActive]}
       activeOpacity={0.9}
+      onPress={onPress}
     >
       <ImageBackground
         source={competition_bg}
@@ -77,4 +79,5 @@ const styles = StyleSheet.create({
 
 type CompetitionCardProps = {
   active?: boolean;
+  onPress?: TouchableOpacity["props"]["onPress"];
 } & Competition;

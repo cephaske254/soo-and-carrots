@@ -4,3 +4,4 @@ export * from "./Star";
 export * from "./Eye";
 export * from "./Email";
 export * from "./Login";
+export * from "./Chevron";

@@ -17,7 +17,11 @@ export const InputLabel = (props: InputLabelProps) => {
       fontFamily="PlusJakartaSans-SemiBold"
       {...props}
       color={color}
-      style={[styles.label, props.style]}
+      style={[
+        styles.label,
+        props.style,
+        props.underlined && styles.underlinedLabel,
+      ]}
     >
       {props.children}
       {!!props.required && "*"}
@@ -29,10 +33,14 @@ export type InputLabelProps = {
   error?: boolean;
   required?: boolean;
   children?: React.ReactNode;
+  underlined?: boolean;
 } & TypographyProps;
 
 const styles = StyleSheet.create({
   label: {
     marginBottom: spacing["sm"],
+  },
+  underlinedLabel: {
+    textDecorationLine: "underline",
   },
 });

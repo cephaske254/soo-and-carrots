@@ -18,7 +18,9 @@ export type RootStackParamList = {
 };
 
 export type HomeStackParamList = {
-  home: undefined;
+  home?: {
+    register_success?: boolean;
+  };
 };
 
 export type HomeStackScreenProps<T extends keyof HomeStackParamList> =

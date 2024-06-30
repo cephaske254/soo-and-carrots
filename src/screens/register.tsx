@@ -15,7 +15,7 @@ import {
   Typography,
 } from "src/components";
 import { FormProvider } from "src/components/hook-form/FormProvider";
-import { ArrowLeftIcon } from "src/icons";
+import { ArrowLeftIcon, ChevronDownIcon } from "src/icons";
 import { GREY, spacing } from "src/theme";
 import { RHFCheckbox } from "src/components/hook-form/RHFCheckbox";
 import type { NativeStackHeaderProps } from "@react-navigation/native-stack";
@@ -28,6 +28,11 @@ const CHECKBOX_LABEL_PROPS: Omit<InputLabelProps, "children"> = {
   color: "grey.600",
   fontFamily: "PlusJakartaSans-Regular",
   variant: "body2",
+  style: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
 };
 
 export const RegisterScreenHeader = (props: NativeStackHeaderProps) => {
@@ -64,12 +69,13 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
 
   const passwordErrors = methods.formState.errors.password?.message;
 
-  const onSubmit = methods.handleSubmit(() => {
-    const promise = new Promise((resolve) => {
-      setTimeout(resolve, 5000);
+  const onSubmit = methods.handleSubmit(async () => {
+    navigation.navigate("Home", {
+      screen: "home",
+      params: {
+        register_success: true,
+      },
     });
-
-    return promise;
   });
 
   const openCategorySelector = useCallback(() => {
@@ -96,12 +102,17 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
               placeholder="Competition to signup*"
               readOnly
               name="competition"
+              endAdornment={
+                <ChevronDownIcon style={{ marginRight: spacing["2xs"] }} />
+              }
             />
           </TouchableOpacity>
           <RHFTextField<FieldValues>
             name="email"
             placeholder="Email *"
             containerStyle={styles.inputStyles}
+            keyboardType="email-address"
+            autoCapitalize="none"
           />
 
           <RHFPasswordField<FieldValues>
@@ -136,13 +147,20 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({
             name="terms_and_conditions"
             containerStyle={styles.inputStyles}
             label={
-              <InputLabel {...CHECKBOX_LABEL_PROPS}>
+              <InputLabel
+                {...CHECKBOX_LABEL_PROPS}
+                style={{
+                  flex: 1,
+                  marginTop: -6,
+                  marginBottom: 6,
+                }}
+              >
                 By signing up, I agree to Cloit's{" "}
-                <InputLabel {...CHECKBOX_LABEL_PROPS}>
+                <InputLabel {...CHECKBOX_LABEL_PROPS} underlined>
                   Terms & Conditions
                 </InputLabel>{" "}
                 and{" "}
-                <InputLabel {...CHECKBOX_LABEL_PROPS}>
+                <InputLabel {...CHECKBOX_LABEL_PROPS} underlined>
                   Privacy Policy
                 </InputLabel>
                 .

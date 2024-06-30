@@ -75,6 +75,8 @@ The project includes various npm scripts to simplify development tasks:
 - `start:android:` Starts the development server for Android.
 - `start:ios`: Starts the development server for iOS (requires a Mac).
 - `start:storybook`: Starts the Storybook development server.
+- `start:storybook:android`: Starts the Storybook for Android
+- `start:storybook:ios`: Starts the Storybook for iOS(requires a Mac)
 - `storybook-generate`: Generates Storybook stories (refer to Storybook documentation).
 
 ### Screenshots

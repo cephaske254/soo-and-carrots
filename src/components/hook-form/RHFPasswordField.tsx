@@ -16,7 +16,6 @@ export const RHFPasswordField = <T extends object = Record<string, any>>({
           {...field}
           onChangeText={field.onChange}
           autoCapitalize="none"
-          keyboardType="visible-password"
           textContentType="password"
           {...props}
           helperText={error?.message || helperText}

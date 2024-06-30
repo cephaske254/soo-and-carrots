@@ -3,9 +3,10 @@ import { TextField, TextFieldProps, TextFieldRef } from "./TextField";
 import { EyeIcon, EyeOffIcon } from "src/icons";
 import { IconButton } from "../IconButton";
 import { GREY } from "src/theme";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
-const BUTTON_SIZE = 32;
-const ICON_SIZE = 0.8 * BUTTON_SIZE;
+const BUTTON_SIZE = 35;
+const ICON_SIZE = 0.6 * BUTTON_SIZE;
 
 const ICON_PROPS = {
   strokeWidth: 1,
@@ -31,21 +32,31 @@ export const PasswordField = forwardRef<TextFieldRef, PasswordFieldProps>(
       <TextField
         {...props}
         endAdornment={
-          <IconButton
+          <TouchableOpacity
             onPress={toggleVisible}
-            size={BUTTON_SIZE}
-            variant="outline"
+            style={styles.endAdornment}
+            activeOpacity={0.8}
           >
             {endAdornment}
-          </IconButton>
+          </TouchableOpacity>
         }
         textContentType="password"
         secureTextEntry={!visible}
+        keyboardType={visible ? "visible-password" : "default"}
         ref={ref}
       />
     );
   }
 );
+
+const styles = StyleSheet.create({
+  endAdornment: {
+    height: BUTTON_SIZE,
+    width: BUTTON_SIZE,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 
 export type PasswordFieldProps = TextFieldProps & {
   defaultVisible?: boolean;

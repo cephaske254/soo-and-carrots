@@ -37,8 +37,10 @@ const config = {
   ],
   ios: {
     supportsTablet: true,
+    bundleIdentifier: "com.cephaske254.sooandcarrots",
   },
   android: {
+    package: "com.cephaske254.sooandcarrots",
     adaptiveIcon: {
       foregroundImage: "./src/assets/adaptive-icon.png",
       backgroundColor: "#ffffff",

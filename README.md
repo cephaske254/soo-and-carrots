@@ -99,4 +99,5 @@ The project includes various npm scripts to simplify development tasks:
 ![text](./screenshots/home_success_modal.jpg)
 
 ### 5. Storybook
+
 ![text](./screenshots/storybooku.jpg)
